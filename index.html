@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dangote Share</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7f6;
+    color: #17231d;
+}
+
+/* HEADER */
+header {
+    background: white;
+    border-bottom: 1px solid #e5e9e7;
+    padding: 14px 6%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav {
+    max-width: 1150px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 21px;
+    font-weight: 800;
+    color: #087a43;
+}
+
+.logo img {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 22px;
+    font-weight: 600;
+}
+
+.login-btn {
+    background: #087a43;
+    color: white !important;
+    padding: 11px 17px;
+    border-radius: 10px;
+}
+
+/* HERO */
+.hero {
+    max-width: 1150px;
+    margin: auto;
+    padding: 70px 6%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.badge {
+    display: inline-block;
+    background: #e4f6ec;
+    color: #087a43;
+    padding: 8px 13px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: 58px;
+    line-height: 1.05;
+    margin: 18px 0;
+}
+
+.hero h1 span {
+    color: #087a43;
+}
+
+.hero p {
+    color: #69756f;
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 580px;
+}
+
+.buttons {
+    margin-top: 27px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    border: none;
+    padding: 13px 20px;
+    border-radius: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.primary {
+    background: #087a43;
+    color: white;
+}
+
+.secondary {
+    background: white;
+    color: #087a43;
+    border: 1px solid #dce4df;
+}
+
+/* LOGO CARD */
+.logo-card {
+    background: #172b6a;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+.logo-card img {
+    width: 100%;
+    display: block;
+    border-radius: 15px;
+}
+
+.logo-caption {
+    background: white;
+    margin-top: 15px;
+    padding: 15px;
+    text-align: center;
+    border-radius: 14px;
+}
+
+.logo-caption strong {
+    display: block;
+    color: #087a43;
+    font-size: 19px;
+}
+
+.logo-caption small {
+    color: #68736e;
+}
+
+/* SECTIONS */
+section {
+    padding: 60px 6%;
+    max-width: 1150px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-title h2 {
+    font-size: 34px;
+    margin-bottom: 7px;
+}
+
+.section-title p {
+    color: #69756f;
+}
+
+/* SHARE PLANS */
+.plans {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.plan {
+    background: white;
+    border: 1px solid #e3e9e5;
+    padding: 24px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+}
+
+.plan small {
+    color: #68736e;
+}
+
+.plan strong {
+    display: block;
+    color: #087a43;
+    font-size: 25px;
+    margin-top: 7px;
+}
+
+/* DEPOSIT */
+.deposit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #e3e9e5;
+    border-radius: 20px;
+    padding: 25px;
+}
+
+.account {
+    background: linear-gradient(145deg, #092619, #087a43);
+    color: white;
+}
+
+.detail {
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.detail:last-child {
+    border: none;
+}
+
+.detail small {
+    display: block;
+    color: #b9d6c6;
+    margin-bottom: 4px;
+}
+
+.copy {
+    float: right;
+    background: rgba(255,255,255,0.12);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* NOTICE */
+.notice {
+    background: #fff8e5;
+    border: 1px solid #ead9a5;
+    padding: 17px;
+    border-radius: 14px;
+    color: #6b581f;
+}
+
+/* FOOTER */
+footer {
+    background: #101814;
+    color: #b9c4be;
+    text-align: center;
+    padding: 30px;
+    margin-top: 40px;
+}
+
+/* LOGIN POPUP */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 200;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 420px;
+    background: white;
+    padding: 30px;
+    border-radius: 22px;
+}
+
+.login-logo {
+    text-align: center;
+}
+
+.login-logo img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+.login-box h2 {
+    text-align: center;
+    margin: 15px 0 5px;
+}
+
+.login-box p {
+    text-align: center;
+    color: #69756f;
+}
+
+.login-box label {
+    display: block;
+    margin-top: 16px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 13px;
+    margin-top: 7px;
+    border: 1px solid #d9e1dd;
+    border-radius: 10px;
+}
+
+.login-submit {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.close {
+    float: right;
+    border: none;
+    background: none;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.error {
+    color: #b42318 !important;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+/* MOBILE */
+@media(max-width: 800px) {
+
+    .nav a {
+        display: none;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding-top: 45px;
+    }
+
+    .hero h1 {
+        font-size: 44px;
+    }
+
+    .plans {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .deposit-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 480px) {
+
+    .plans {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 39px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+
+<div class="nav">
+
+<a href="index.html" class="logo">
+
+<img src="assets/dangote-logo.jpg">
+
+<span>Dangote Share</span>
+
+</a>
+
+<div>
+
+<a href="#plans">Share Plans</a>
+
+<a href="#deposit">Deposit</a>
+
+<a href="#about">About</a>
+
+<a href="#" class="login-btn" onclick="openLogin()">
+Member Login
+</a>
+
+</div>
+
+</div>
+
+</header>
+
+
+<!-- HERO -->
+<div class="hero">
+
+<div>
+
+<span class="badge">
+PRIVATE FAMILY SHARE PLATFORM
+</span>
+
+<h1>
+Welcome to
+<span>Dangote Share</span>
+</h1>
+
+<p>
+A simple and organized platform for managing family
+share contributions, deposits and payment records.
+</p>
+
+<div class="buttons">
+
+<a href="#plans" class="btn primary">
+View Share Plans
+</a>
+
+<a href="#deposit" class="btn secondary">
+How to Deposit
+</a>
+
+</div>
+
+</div>
+
+
+<!-- YOUR DANGOTE LOGO -->
+<div class="logo-card">
+
+<img src="assets/dangote-logo.jpg">
+
+<div class="logo-caption">
+
+<strong>DANGOTE SHARE</strong>
+
+<small>
+Private Family Share Platform
+</small>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SHARE PLANS -->
+<section id="plans">
+
+<div class="section-title">
+
+<h2>Share Plans</h2>
+
+<p>
+Choose your preferred number of shares.
+</p>
+
+</div>
+
+
+<div class="plans">
+
+<div class="plan">
+
+<small>10 Shares</small>
+
+<strong>₦5,250</strong>
+
+</div>
+
+
+<div class="plan">
+
+<small>100 Shares</small>
+
+<strong>₦52,500</strong>
+
+</div>
+
+
+<div class="plan">
+
+<small>1,000 Shares</small>
+
+<strong>₦525,000</strong>
+
+</div>
+
+
+<div class="plan">
+
+<small>10,000 Shares</small>
+
+<strong>₦5,250,000</strong>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- DEPOSIT -->
+<section id="deposit">
+
+<div class="section-title">
+
+<h2>Make a Deposit</h2>
+
+<p>
+Send your contribution to the account below.
+</p>
+
+</div>
+
+
+<div class="deposit-grid">
+
+
+<div class="card account">
+
+<h3>Payment Account</h3>
+
+
+<div class="detail">
+
+<small>Bank / Wallet</small>
+
+PalmPay
+
+</div>
+
+
+<div class="detail">
+
+<small>Account Name</small>
+
+UMAR YUSUF
+
+</div>
+
+
+<div class="detail">
+
+<small>Account Number</small>
+
+<button class="copy" onclick="copyAccount()">
+Copy
+</button>
+
+7071052692
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>After Payment</h3>
+
+<br>
+
+<p>
+After sending your money, keep your transaction
+receipt and reference number.
+</p>
+
+<br>
+
+<button class="btn primary" onclick="openLogin()">
+Submit Deposit
+</button>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section id="about">
+
+<div class="notice">
+
+<strong>Family Notice</strong>
+
+<br><br>
+
+Dangote Share is intended for our private family
+share/contribution arrangement. All contribution
+amounts, payment dates and other terms should be
+agreed by the family before making a contribution.
+
+</div>
+
+</section>
+
+
+<footer>
+
+<strong>Dangote Share</strong>
+
+<br>
+
+Private Family Share Platform
+
+<br><br>
+
+© 2026 Dangote Share
+
+</footer>
+
+
+<!-- LOGIN POPUP -->
+<div class="modal hidden" id="loginModal">
+
+<div class="login-box">
+
+<button class="close" onclick="closeLogin()">
+×
+</button>
+
+
+<div class="login-logo">
+
+<img src="assets/dangote-logo.jpg">
+
+</div>
+
+
+<h2>
+Welcome Back
+</h2>
+
+<p>
+Sign in to your Dangote Share account.
+</p>
+
+
+<label>
+Username
+</label>
+
+<input
+type="text"
+id="username"
+placeholder="Enter username"
+>
+
+
+<label>
+Password
+</label>
+
+<input
+type="password"
+id="password"
+placeholder="Enter password"
+>
+
+
+<button
+class="btn primary login-submit"
+onclick="login()"
+>
+Sign In
+</button>
+
+
+<p id="loginError" class="error"></p>
+
+</div>
+
+</div>
+
+
+<script>
+
+function openLogin() {
+
+    document
+    .getElementById("loginModal")
+    .classList
+    .remove("hidden");
+
+}
+
+
+function closeLogin() {
+
+    document
+    .getElementById("loginModal")
+    .classList
+    .add("hidden");
+
+}
+
+
+function copyAccount() {
+
+    navigator.clipboard.writeText("7071052692");
+
+    alert("PalmPay account number copied!");
+
+}
+
+
+function login() {
+
+    const username =
+        document.getElementById("username").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+
+    /* MEMBER LOGIN */
+
+    if (
+        username === "family1" &&
+        password === "family123"
+    ) {
+
+        window.location.href = "dashboard.html";
+
+        return;
+
+    }
+
+
+    /* ADMIN LOGIN */
+
+    if (
+        username === "admin" &&
+        password === "admin123"
+    ) {
+
+        window.location.href = "admin.html";
+
+        return;
+
+    }
+
+
+    document.getElementById("loginError").textContent =
+        "Incorrect username or password.";
+
+}
+
+</script>
+
+</body>
+</html>
