@@ -789,8 +789,309 @@ function login() {
         "Incorrect username or password.";
 
 }
+    /* =========================
+   SIGN UP / CREATE ACCOUNT
+   ========================= */
 
-</script>
+(function () {
+
+  /* Add the Sign Up button to the existing login box */
+  const loginBox = document.querySelector(".login-box");
+
+  if (loginBox) {
+
+    const signupButton = document.createElement("button");
+
+    signupButton.type = "button";
+    signupButton.textContent = "Create Account";
+    signupButton.style.width = "100%";
+    signupButton.style.marginTop = "12px";
+    signupButton.style.padding = "13px";
+    signupButton.style.border = "1px solid #d9e1dd";
+    signupButton.style.borderRadius = "10px";
+    signupButton.style.background = "white";
+    signupButton.style.color = "#17321d";
+    signupButton.style.fontWeight = "bold";
+    signupButton.style.cursor = "pointer";
+
+    signupButton.onclick = function () {
+      document.getElementById("signupModal").classList.remove("hidden");
+    };
+
+    loginBox.appendChild(signupButton);
+  }
+
+
+  /* Create Sign Up popup */
+  const signupModal = document.createElement("div");
+
+  signupModal.id = "signupModal";
+  signupModal.className = "modal hidden";
+
+  signupModal.innerHTML = `
+    <div class="login-box">
+
+      <button
+        type="button"
+        class="close"
+        onclick="closeSignup()">
+        ×
+      </button>
+
+      <div class="login-logo">
+        <h2>Create Account</h2>
+        <p>Join Dangote Share</p>
+      </div>
+
+      <label>Full Name</label>
+      <input
+        type="text"
+        id="signupName"
+        placeholder="Enter your full name">
+
+      <label>Username</label>
+      <input
+        type="text"
+        id="signupUsername"
+        placeholder="Choose a username">
+
+      <label>Password</label>
+      <input
+        type="password"
+        id="signupPassword"
+        placeholder="Create a password">
+
+      <label>Confirm Password</label>
+      <input
+        type="password"
+        id="signupConfirm"
+        placeholder="Confirm your password">
+
+      <button
+        type="button"
+        class="login-submit"
+        onclick="createAccount()"
+        style="width:100%; margin-top:20px;">
+        Create Account
+      </button>
+
+      <p
+        id="signupMessage"
+        style="text-align:center; margin-top:12px;">
+      </p>
+
+    </div>
+  `;
+
+  document.body.appendChild(signupModal);
+
+
+  /* Close Sign Up popup */
+  window.closeSignup = function () {
+    document.getElementById("signupModal").classList.add("hidden");
+  };
+
+
+  /* Create new account */
+  window.createAccount = function () {
+
+    const name =
+      document.getElementById("signupName").value.trim();
+
+    const username =
+      document.getElementById("signupUsername").value.trim();
+
+    const password =
+      document.getElementById("signupPassword").value;
+
+    const confirm =
+      document.getElementById("signupConfirm").value;
+
+    const message =
+      document.getElementById("signupMessage");
+
+
+    if (!name || !username || !password || !confirm) {
+
+      message.textContent =
+        "Please complete all fields.";
+
+      message.style.color = "#b42318";
+
+      return;
+    }
+
+
+    if (password !== confirm) {
+
+      message.textContent =
+        "Passwords do not match.";
+
+      message.style.color = "#b42318";
+
+      return;
+    }
+
+
+    if (username.length < 4) {
+
+      message.textContent =
+        "Username must be at least 4 characters.";
+
+      message.style.color = "#b42318";
+
+      return;
+    }
+
+
+    if (password.length < 6) {
+
+      message.textContent =
+        "Password must be at least 6 characters.";
+
+      message.style.color = "#b42318";
+
+      return;
+    }
+
+
+    const accounts =
+      JSON.parse(localStorage.getItem("dangoteShareAccounts") || "[]");
+
+
+    const existingAccount =
+      accounts.find(function (account) {
+        return account.username.toLowerCase() ===
+               username.toLowerCase();
+      });
+
+
+    if (existingAccount) {
+
+      message.textContent =
+        "That username already exists.";
+
+      message.style.color = "#b42318";
+
+      return;
+    }
+
+
+    const newAccount = {
+      name: name,
+      username: username,
+      password: password,
+      createdAt: new Date().toISOString()
+    };
+
+
+    accounts.push(newAccount);
+
+    localStorage.setItem(
+      "dangoteShareAccounts",
+      JSON.stringify(accounts)
+    );
+
+
+    message.textContent =
+      "Account created successfully! You can now log in.";
+
+    message.style.color = "#16803c";
+
+
+    setTimeout(function () {
+
+      closeSignup();
+
+      document.getElementById("signupName").value = "";
+      document.getElementById("signupUsername").value = "";
+      document.getElementById("signupPassword").value = "";
+      document.getElementById("signupConfirm").value = "";
+      message.textContent = "";
+
+    }, 1500);
+
+  };
+
+
+  /* Allow newly created members to log in */
+  window.login = function () {
+
+    const username =
+      document.getElementById("username").value.trim();
+
+    const password =
+      document.getElementById("password").value;
+
+
+    /* Existing member account */
+    if (
+      username === "family1" &&
+      password === "family123"
+    ) {
+
+      window.location.href = "dashboard.html";
+
+      return;
+    }
+
+
+    /* Existing admin account */
+    if (
+      username === "admin" &&
+      password === "admin123"
+    ) {
+
+      window.location.href = "admin.html";
+
+      return;
+    }
+
+
+    /* New accounts created through Sign Up */
+    const accounts =
+      JSON.parse(localStorage.getItem("dangoteShareAccounts") || "[]");
+
+
+    const account =
+      accounts.find(function (item) {
+
+        return (
+          item.username === username &&
+          item.password === password
+        );
+
+      });
+
+
+    if (account) {
+
+      localStorage.setItem(
+        "dangoteCurrentUser",
+        JSON.stringify(account)
+      );
+
+      window.location.href = "dashboard.html";
+
+      return;
+    }
+
+
+    const error =
+      document.getElementById("loginError");
+
+    if (error) {
+
+      error.textContent =
+        "Incorrect username or password.";
+
+    }
+
+  };
+
+})();
+
+</script> 
 
 </body>
 </html>
