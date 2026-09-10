@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dangote Share - Admin Dashboard</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f7f5;
+    color: #222;
+}
+
+header {
+    background: #00843D;
+    color: white;
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-area img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    background: white;
+    border-radius: 8px;
+}
+
+.logo-area h2 {
+    font-size: 20px;
+}
+
+.logout {
+    background: white;
+    color: #00843D;
+    border: none;
+    padding: 9px 14px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 1050px;
+    margin: auto;
+    padding: 25px 18px;
+}
+
+h1 {
+    margin-bottom: 7px;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.stat {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.07);
+}
+
+.stat p {
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.stat strong {
+    font-size: 25px;
+    color: #00843D;
+}
+
+.section {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.06);
+    margin-bottom: 20px;
+}
+
+.section h2 {
+    margin-bottom: 15px;
+}
+
+.deposit {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 12px;
+}
+
+.deposit strong {
+    color: #00843D;
+}
+
+.pending {
+    display: inline-block;
+    background: #fff3cd;
+    color: #856404;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.buttons {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+button {
+    border: none;
+    padding: 9px 14px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.approve {
+    background: #00843D;
+    color: white;
+}
+
+.reject {
+    background: #dc3545;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    color: #777;
+    padding: 25px;
+    font-size: 13px;
+}
+
+@media (max-width: 650px) {
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo-area">
+        <img src="dangote-share-logo.jpg" alt="Dangote Share Logo">
+        <h2>Dangote Share</h2>
+    </div>
+
+    <button class="logout" onclick="logout()">Logout</button>
+</header>
+
+<div class="container">
+
+    <h1>Admin Dashboard</h1>
+    <p class="subtitle">Manage members and contribution submissions.</p>
+
+    <div class="stats">
+
+        <div class="stat">
+            <p>Total Members</p>
+            <strong>0</strong>
+        </div>
+
+        <div class="stat">
+            <p>Total Contributions</p>
+            <strong>₦0</strong>
+        </div>
+
+        <div class="stat">
+            <p>Pending Deposits</p>
+            <strong>0</strong>
+        </div>
+
+    </div>
+
+    <div class="section">
+
+        <h2>Deposit Submissions</h2>
+
+        <div class="deposit">
+
+            <p><strong>Member:</strong> No submissions yet</p>
+            <p><strong>Amount:</strong> ₦0</p>
+            <p><strong>Shares:</strong> 0</p>
+
+            <span class="pending">Pending</span>
+
+            <div class="buttons">
+                <button class="approve" onclick="approveDeposit()">
+                    Approve
+                </button>
+
+                <button class="reject" onclick="rejectDeposit()">
+                    Reject
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="section">
+
+        <h2>Payment Account</h2>
+
+        <p><strong>Method:</strong> PalmPay</p>
+        <p><strong>Account Name:</strong> UMAR YUSUF</p>
+        <p><strong>Account Number:</strong> 7071052692</p>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Dangote Share. Private family share/contribution platform.
+</footer>
+
+<script>
+
+function approveDeposit() {
+    alert("There is currently no deposit to approve.");
+}
+
+function rejectDeposit() {
+    alert("There is currently no deposit to reject.");
+}
+
+function logout() {
+    window.location.href = "index.html";
+}
+
+</script>
+
+</body>
+</html>
